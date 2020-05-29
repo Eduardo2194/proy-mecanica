@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT">
+			<PatternLayout>
+				<pattern>%d{ISO8601} %-7p %-25.25c{1} %X{XthreadID} %X{XminClassName} %X{XmethodName} %m%n</pattern>
+			</PatternLayout>
+        </Console>
+		<Async name="async-application-appender" bufferSize="10000">
+			<AppenderRef ref="ConsoleAppender"/>
+		</Async>
+	</Appenders>
+	<Loggers>
+		<Logger  additivity="false" name="com.example" level="trace">
+			<AppenderRef ref="async-application-appender" />
+		</Logger>
+		<Root  additivity="false" level="error">
+			<AppenderRef ref="async-application-appender" />
+		</Root>
+	</Loggers>
+</Configuration>
